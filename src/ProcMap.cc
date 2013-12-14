@@ -24,7 +24,8 @@ ProcMap::~ProcMap() {
  * Get all tiles in the map
  * @return all tiles in the map
  */
-vector< vector<MapTile> > ProcMap::getMapTiles()
+vector< vector<MapTile> >
+ProcMap::getMapTiles()
 {
 	return mMapTiles;
 }
@@ -35,9 +36,14 @@ vector< vector<MapTile> > ProcMap::getMapTiles()
  * @param y y coordinate of the tile to get
  * @return the tile
  */
-MapTile ProcMap::getTile(int x, int y)
+MapTile
+ProcMap::getTile(int x, int y)
 {
-	return mMapTiles[x][y];
+	try {
+		return mMapTiles[x][y];
+	} catch (out_of_range err) {
+		throw err;
+	}
 }
 
 /**
@@ -46,7 +52,16 @@ MapTile ProcMap::getTile(int x, int y)
  * @param y y coordinate of the new tile
  * @param newTile the new tile
  */
-void ProcMap::setTile(int x, int y, MapTile newTile)
+void
+ProcMap::setTile(int x, int y, MapTile newTile)
 {
-	mMapTiles[x][y] = newTile;
+	try {
+		mMapTiles[x][y] = newTile;
+	} catch (out_of_range err) {
+		throw err;
+	}
+}
+
+void ProcMap::setTerrainWeight(int x, int y, Terrain newTerrain, int weight) {
+	mMapTiles[x][y].setTerrainWeight(newTerrain, weight);
 }

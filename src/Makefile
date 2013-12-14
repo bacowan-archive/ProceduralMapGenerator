@@ -1,5 +1,5 @@
 LIBS=
-CFLAGS=-Wall
+CFLAGS=-Wall -std=c++0x
 SRC=$(wildcard *.cc)
 
 test: $(SRC)
