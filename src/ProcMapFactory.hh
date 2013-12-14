@@ -1,12 +1,19 @@
-#include "ProcMap.hh"
+#ifndef __PROC_MAP_FACTORY__HH__
+#define __PROC_MAP_FACTORY__HH__
 
-using namespace std
+#include "ProcMap.hh"
+#include "ProcMapOptions.hh"
+
+using namespace std;
 
 class ProcMapFactory {
 private:
-	static ProcMapFactory mPMapFactory = NULL;
+	static ProcMapFactory *mPMapFactory;
 	ProcMapFactory();
 public:
 	static ProcMapFactory getProcMapFactory();
-	ProcMap createProcMap(MapFactoryOptions);
-}
+	ProcMap createProcMap(ProcMapOptions);
+};
+
+
+#endif
